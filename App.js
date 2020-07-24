@@ -21,21 +21,21 @@ const ItemText = styled.Text`
 
 export default () => {
 
-    let pessoa = { nome: 'arthur', idade: 15 };
+  let pessoa = { nome: 'arthur', idade: 15 };
 
-    console.log(pessoa);
+  console.log(pessoa);
 
-    return (
-        <Page>
-            <Scroll>
-                {lista.map((item, index) => {
-                    return (
-                        <Item key={index}>
-                            <ItemText>{item.task}</ItemText>
-                        </Item>
-                    );
-                })}
-            </Scroll>
-        </Page>
-    );
+  return (
+    <Page>
+      <Scroll>
+        {lista.map((item, index) => {
+          return (
+            <Item key={index}>
+              <ItemText>{item.task}</ItemText>
+            </Item>
+          );
+        })}
+      </Scroll>
+    </Page>
+  );
 }
