@@ -1,22 +1,41 @@
 import React from 'react';
-import { Button, Text } from 'native-base';
 import styled from 'styled-components/native';
-
-//import Header from './src/components/Header';
-//source={require('./src/images/consolide-logo-new.png')
+import lista from './src/lista';
 
 const Page = styled.SafeAreaView`
     flex: 1;
-    justify-content: center;
-    align-items: center;
     background-color: #037EF8;
+`;
+
+const Scroll = styled.ScrollView`
+    flex:1;
+`;
+
+const Item = styled.View`
+    padding: 10px;
+`;
+
+const ItemText = styled.Text`
+    font-size: 15px;
 `;
 
 export default () => {
 
+    let pessoa = { nome: 'arthur', idade: 15 };
+
+    console.log(pessoa);
+
     return (
         <Page>
-            
+            <Scroll>
+                {lista.map((item, index) => {
+                    return (
+                        <Item key={index}>
+                            <ItemText>{item.task}</ItemText>
+                        </Item>
+                    );
+                })}
+            </Scroll>
         </Page>
     );
 }
