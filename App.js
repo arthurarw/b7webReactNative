@@ -1,41 +1,43 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components/native';
 import lista from './src/lista';
+import ListaItem from './src/components/ListaItem';
+import AddItemArea from './src/components/AddItemArea';
+import uuid from 'react-native-uuid';
+
 
 const Page = styled.SafeAreaView`
-    flex: 1;
-    background-color: #037EF8;
+    flex:1;
 `;
-
-const Scroll = styled.ScrollView`
+/*const Scroll = styled.ScrollView`
+    flex:1;
+`;*/
+const Listagem = styled.FlatList`
     flex:1;
 `;
 
-const Item = styled.View`
-    padding: 10px;
-`;
-
-const ItemText = styled.Text`
-    font-size: 15px;
-`;
-
 export default () => {
+  const [items, setItems] = useState(lista);
+  
+  const addNewItem = (text) => {
+    let newItems = [...items];
+    newItems.push({
+      id: uuid.v4(),
+      task: text,
+      done: false
+    });
+    setItems(newItems);
+  }
 
-  let pessoa = { nome: 'arthur', idade: 15 };
 
-  console.log(pessoa);
-
-  return (
-    <Page>
-      <Scroll>
-        {lista.map((item, index) => {
-          return (
-            <Item key={index}>
-              <ItemText>{item.task}</ItemText>
-            </Item>
-          );
-        })}
-      </Scroll>
-    </Page>
-  );
+	return (
+		<Page>
+			<AddItemArea onAdd={addNewItem} />
+			<Listagem
+				data={items}
+				renderItem={({item}) => <ListaItem data={item} />}
+				keyExtractor={(item) => item.id}
+			/>
+		</Page>
+	);
 }
