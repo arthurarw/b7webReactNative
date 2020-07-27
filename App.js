@@ -1,19 +1,12 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import styled from 'styled-components/native';
-
-
-const Page = styled.SafeAreaView`
-  flex: 1;
-  align-content: center;
-  justify-content: center;
-  background-color: blue;
-`;
+import MainStack from './src/navigators/MainStack';
 
 function App() {
   return (
     <NavigationContainer>
-      
+      <MainStack />
     </NavigationContainer>
   );
 }
