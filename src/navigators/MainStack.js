@@ -9,7 +9,17 @@ const MainStack = createStackNavigator();
 
 export default () => {
   return (
-    <MainStack.Navigator>
+    <MainStack.Navigator screenOptions={{
+      headerTitleAlign: 'center',
+      headerStyle: {
+        backgroundColor: '#0000FF',
+        height: 80,
+      },
+      headerTitleStyle: {
+        color: '#FFF',
+        fontWeight: 'bold'
+      }
+    }}>
       <MainStack.Screen name="Home" component={HomeScreen} />
       <MainStack.Screen name="About" component={AboutScreen} />
     </MainStack.Navigator>
